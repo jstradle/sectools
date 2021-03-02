@@ -1,0 +1,18 @@
+@slow @announce
+Feature: nmap attacks for example.com
+  Background:
+    Given "nmap" is installed
+    And the following profile:
+      | name           | value           |
+      | hostname       | scanme.nmap.org |
+      | tcp_ping_ports | 22,25,80,443    |
+
+  Scenario: Using tcp syn ping scan and the nmap fast flag
+    When I launch an "nmap" attack with:
+      """
+      nmap -F -PS<tcp_ping_ports> <hostname> -oX foo.xml
+      """
+    Then the file "foo.xml" should contain XML:
+      | css                                                         |
+      | ports port[protocol="tcp"][portid="80"] state[state="open"] |
+      | ports port[protocol="tcp"][portid="22"] state[state="open"] |
