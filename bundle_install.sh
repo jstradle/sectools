@@ -1,1 +1,2 @@
-gem install bundler && bundler install
+gem install optimist
+bundle install

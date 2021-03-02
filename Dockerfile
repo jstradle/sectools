@@ -40,14 +40,15 @@ RUN apt-get update && apt-get install -y tzdata \
 RUN git clone https://github.com/gauntlt/gauntlt.git
 RUN cp /gauntlt/bin/gauntlt /usr/local/bin/
 #RUN gem install bundler
-COPY /examples /gauntlt/examples
+#COPY /examples /gauntlt/examples
+COPY /attacks /gauntlt/attacks
 #COPY bundle_install.sh /tmp
 #RUN /bin/bash -c "/tmp/bundle_install.sh"
 #ADD Gemfile $APP_HOME/Gemfile
 #ADD Gemfile.lock $APP_HOME/Gemfile.lock
 #RUN bundler install
 #RUN bundler exec rake
-
+COPY bundle_install.sh /opt
 WORKDIR /opt
 
 # W3AF
