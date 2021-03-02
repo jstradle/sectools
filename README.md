@@ -1,1 +1,1 @@
-Security Tools containing gauntlt, arachni, w3af, nmap, dib, nikto built on Ubuntu 20.04
+Security Tools containing gauntlt, arachni, w3af, nmap, dibr, nikto built on Ubuntu 20.04
