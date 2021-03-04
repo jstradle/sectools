@@ -1,0 +1,21 @@
+sudo: required
+
+language: ruby
+
+services:
+  - docker
+
+before_install:
+- docker pull karthequian/gruyere:latest
+#- docker pull gauntlt/gauntlit
+- docker pull jstradle/sectools
+- docker run --rm -d -p 8008:8008 karthequian/gruyere:latest
+- docker ps -a
+- ./scripts/travis-config.sh
+
+script:
+  - cat ./config/cucumber.yml
+  - docker run -t --rm -v $(pwd):/working -w /working gauntlt/bin/gauntlt ./attacks/hello-world.attack
+  - docker run -t --rm -v $(pwd):/working -w /working gauntlt/bin/gauntlt ./attacks/port-env-vars.attack
+  - docker run -t --rm -v $(pwd):/working -w /working gauntlt/bin/gauntlt ./attacks/xss.attack
+

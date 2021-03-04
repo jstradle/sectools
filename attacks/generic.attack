@@ -4,9 +4,9 @@ This attack adapter allows for any command line binary to be executed and the ou
 
 Background:
   Given the "ping" command line binary is installed
-  And the following profile:
-    | name     | value      |
-    | hostname | localhost  |
+    And the following environmental variables:
+     | name                | environmental_variable_name|
+     | hostname                | TARGET_HOST            |
 
 Scenario: Verify a packet is received from ping
   When I launch a "generic" attack with:

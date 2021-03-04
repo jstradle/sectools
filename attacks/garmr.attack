@@ -2,9 +2,9 @@ Feature: Run garmr scan on a URL
 
 Scenario: Use Garmr to scan a website for the Mozilla opioniated security requirements
   Given "garmr" is installed
-  And the following profile:
-    | name       | value                      |
-    | target_url | http://localhost:8008      |
+  And the following environmental variables:
+     | name                | environmental_variable_name|
+     | hostname                | TARGET_HOST            |
   When I launch a "garmr" attack with:
     """
     garmr -u <target_url> -o my_garmr_output.xml
