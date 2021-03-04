@@ -1,1 +1,1 @@
-docker build -t sectools .
+docker build -t sectools:alpha .
