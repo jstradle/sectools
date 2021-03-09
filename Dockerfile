@@ -93,3 +93,14 @@ RUN apt-get update && \
 #ENV SSLYZE_PATH /usr/local/bin/sslyze
 
 WORKDIR /gauntlt/bin
+
+#VOLUME ["/usr/local/bin/data"]
+
+#docker run -t --rm -v $(pwd):/working -w /working /gauntlt/bin/gauntlt ./attacks/hello-world.attack
+#docker run -t --rm -v $(pwd):/working -w /working /gauntlt/bin/gauntlt /gauntlt/attacks/hello-world.attack
+
+#ENTRYPOINT [ "/usr/local/bin/gauntlt" ]
+#CMD /gauntlt/bin/guantlt /gauntlt/attacks/hello-world.attack
+#RUN ./gauntlt -v
+#RUN ./gauntlt --help
+CMD ./gauntlt /gauntlt/attacks/hello-world.attack
