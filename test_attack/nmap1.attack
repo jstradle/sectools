@@ -1,0 +1,15 @@
+@slow
+
+Feature: nmap attacks for 10.11.2.3 and to use this for your tests, change the value in the profile
+  Background:
+    Given "nmap" is installed
+    And the following profile:
+      | name           | value        |
+      | hostname       | 10.11.2.3    |
+
+  Scenario: Verify that the host is up and is listening on port 80
+    When I launch an "nmap" attack
+    """
+    nmap -p 80 10.11.2.3
+    """
+     
