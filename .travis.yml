@@ -8,7 +8,7 @@ services:
 before_install:
 - docker pull karthequian/gruyere:latest
 #- docker pull gauntlt/gauntlt
-- docker login -e="jstrad@aol.com" -u="jstrad" -p="1221J@son1107"
+- docker login -u=jstrad -p=1221J@son1107
 #- docker pull jstrad/sectools:alpha
 - docker run --rm -d -p 8008:8008 karthequian/gruyere:latest
 - docker ps -a
