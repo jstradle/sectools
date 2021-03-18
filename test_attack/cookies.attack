@@ -5,7 +5,7 @@ Background:
   Given "curl" is installed
     And the following environmental variables:
      | name                | environmental_variable_name|
-     | hostname            | http://10.11.2.3           |
+     | hostname            | http://localhost:8008      |
 
 Scenario: Verify server is returning the cookies expected
   When I launch a "curl" attack with:

@@ -1,17 +1,17 @@
 @slow
 
-Feature: nmap attacks for 10.11.2.3 and to use this for your tests, change the value in the profile
+Feature: nmap attacks for localhost and to use this for your tests, change the value in the profile
   Background:
     Given "nmap" is installed
     And the following profile:
       | name           | value        |
-      | hostname       | 10.11.2.3    |
-      | host           | 10.11.2.3    |
-      | tcp_ping_ports | 22,25,80,443 |
+      | hostname       | localhost    |
+      | host           | localhost    |
+      | tcp_ping_ports | 8008         |
 
   Scenario: Verify server is open on expected set of ports using the nmap-fast attack step
     When I launch a "nmap-fast" attack
-    Then the output should match /80.tcp\s+open/
+    Then the output should match /8008.tcp\s+open/
 
   Scenario: Verify server is open on expected set of ports using the nmap fast flag
     When I launch an "nmap" attack with:
@@ -20,7 +20,7 @@ Feature: nmap attacks for 10.11.2.3 and to use this for your tests, change the v
       """
     Then the output should match:
       """
-      80/tcp\s+open
+      8008/tcp\s+open
       """
 
   Scenario: Verify that there are no unexpected ports open
@@ -31,13 +31,15 @@ Feature: nmap attacks for 10.11.2.3 and to use this for your tests, change the v
     Then the output should not contain:
       """
       22/tcp
+      23/tcp
       25/tcp
+      80/tcp
       """
 
   Scenario: Output to XML
     When I launch an "nmap" attack with:
       """
-      nmap -p 80,443 -oX foo.xml <hostname>
+      nmap -p 8008 -oX foo.xml <hostname>
       """
     And the file "foo.xml" should contain XML:
       | css                                                          |

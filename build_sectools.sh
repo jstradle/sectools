@@ -1,1 +1,1 @@
-docker build -t sectools:alpha .
+docker build -t jstrad/sectools:alpha .

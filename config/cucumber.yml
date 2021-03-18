@@ -1,1 +1,1 @@
-default: TARGET_HOST=10.11.2.36
+default: TARGET_HOST=localhost

@@ -7,18 +7,14 @@ services:
 
 before_install:
 - docker pull karthequian/gruyere:latest
-#- docker pull gauntlt/gauntlt
 - docker login -u=jstrad -p=1221J@son1107
-#- docker pull jstrad/sectools:alpha
+- docker pull jstrad/sectools:alpha
 - docker run --rm -d -p 8008:8008 karthequian/gruyere:latest
+- docker run --name sectools --rm -td -v ~/secfiles:/gauntlt/bin jstrad/sectools:alpha /bin/bash 
 - docker ps -a
 - ./scripts/travis-config.sh
 
 script:
-  - cat ./config/cucumber.yml
-  - docker run --rm -t sectools:alpha
-  #- docker run -t --rm -v $(pwd):/working -w /working /gauntlt/bin/ /gauntlt/attacks/hello-world.attack
-  #- docker run -t --rm -v $(pwd):/working -w /working /gauntlt/bin/gauntlt /gauntlt/attacks/hello-world.attack
-  #- docker run -t --rm -v $(pwd):/working -w /working bin/gauntlt ./attacks/port-env-vars.attack
-  #- docker run -t --rm -v $(pwd):/working -w /working bin/gauntlt ./attacks/xss.attack
-
+ - cat ./config/cucumber.yml
+ - docker exec -d -w/gauntlt/bin -ti sectools ./gauntlt /gauntlt/attacks/nmap.attack
+ #- docker exec -d -w/gauntlt/bin -ti sectools nmap -p 8008 172.17.0.3
