@@ -16,5 +16,5 @@ before_install:
 
 script:
  - cat ./config/cucumber.yml
- #- docker exec -d -w/gauntlt/bin -ti sectools ./gauntlt /gauntlt/attacks/nmap.attack
  - docker exec -d -w/gauntlt/bin -ti sectools nmap -p 8008 172.17.0.1
+ - docker exec -d -w/gauntlt/bin -ti sectools ./gauntlt /gauntlt/attacks/nmap.attack
