@@ -5,8 +5,8 @@ Feature: nmap attacks for localhost and to use this for your tests, change the v
     Given "nmap" is installed
     And the following profile:
       | name           | value        |
-      | hostname       | 172.17.0.3   |
-      | host           | 172.17.0.3   |
+      | hostname       | 172.17.0.1   |
+      | host           | 172.17.0.1   |
       | tcp_ping_ports | 8008         |
 
   Scenario: Verify server is open on expected set of ports using the nmap-fast attack step
