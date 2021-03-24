@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('') {
       steps {
-        git(url: 'https://github.com/jstradle/bash-test.git')
+        sh git clone https://github.com/jstradle/bash-test.git 
       }
     }
 
